@@ -3,10 +3,7 @@ geohopper_isy_gateway
 
 A gateway between Twocanoes Geohopper iBeacons and ISY home automation system by Universal Devices Inc.
 
-Version History:
-
 Version 0.2  -  04 Dec 2014 - Code improvement for ISY location support
-Version 0.1  -  17 Nov 2014 - Initial release
 
 
 This is a simple Perl script which receives a web service POST message from Geohopper and updates an ISY parameter. When you enter a location, ISY var value changes from 0 to 1, when you exit a location ISY var value changes from 1 to 0 from here the options are endless...
