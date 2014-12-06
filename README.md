@@ -26,23 +26,23 @@ Step 2:
 Install Perl. Mac and Linux have it pre-installed
 
 Step 3:
-The script uses LWP and Mojolicious, it is possible that you need to add these modules to your basic Perl installation.
+The script uses LWP, Mojolicious and Config Perl modules, it is possible that you need to add these modules to your basic Perl installation.
 You can follow the instructions here: http://www.cpan.org/modules/INSTALL.html
 
 Step 4:
-Copy the directory with the .pl and .sh scripts to your computer. Make sure you create an empty log dir in that location as well
+Copy the directory with the .pl .sh and .cfg files to your computer. Make sure you create an empty log dir in that location as well
 
 Step 5:
-edit the .pl file and update the parameters relevant to your system -
+edit the .cfg file and update the parameters relevant to your system -
 
     Step 5.1:
     Edit ISY IP, port, user and password
     
     Step 5.2:
-    Edit location names and matching ISY Var IDs. Location names must match the names you defined in Geohopper (case snesitive)
+    Edit location names and matching ISY Var IDs. Location names must match the names you defined in Geohopper (and are case sensitive)
     
     Step 5.3:
-    Update the authorized users. The email account(s) are the same you use in the Geohopper app.
+    Update the authorized users. The email account(s) are the same you use in the Geohopper app. You can add as many users as you’d like.
     
 Step 6:
 Run the app by typing: perl geohopper_isy_gateway.pl daemon --listen "http://*:9129"
@@ -51,10 +51,10 @@ instead of running the script from the command line you can run the .sh (mac or 
 You may need to make the script executable by using the CHMOD +x command
 
 Step 7:
-Test that the server is running - open your browser and point to the server and port your listening on
+Test that the server is running - open your browser and point to the server and port you’re listening on
 
 Step 8:
-Make sure the listening port is open on your router, so Geohopper can send a message to your system
+Make sure the listening port is open on your router, so Geohopper can send a message to your system from the internet
 (you'll have to figure out how to forward the port based on your router)
 
 Step 9:
