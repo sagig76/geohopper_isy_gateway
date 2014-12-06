@@ -3,8 +3,8 @@
 #
 # Author:       Sagi Geva - sagi.geva@icloud.com
 # Project:      Geohopper ISY Home Automation Gateway
-# Version:      0.2
-# Date:			04 Dec 2014
+# Version:      0.3
+# Date:			05 Dec 2014
 #
 
 
@@ -47,6 +47,30 @@ my %authorized = (
 );
 
 
+### DEFINE VAR VALUES FOR EACH EVENT TYPE ###
+
+my %event_value = (
+
+	'Enter' => '1',
+	'Exit' => '0',
+	'Test' => '2',
+
+); 
+
+
+### UPDATE ISY VAR ###
+
+sub update_isy_var {
+
+	my $browser = LWP::UserAgent->new;
+	my $req =  HTTP::Request->new(GET => "http://$isy_params{'address'}:$isy_params{'port'}/rest/vars/set/2/$isy_locations{$_[0]}/$event_value{$_[1]}");
+	$req->authorization_basic("$isy_params{'user'}", "$isy_params{'pass'}");
+	my $reply = $browser->request($req);
+	return $reply;
+
+}
+
+
 get '/' => sub {
 	
     my $self = shift;
@@ -73,31 +97,18 @@ post '/geohopper' => sub {
     my $event = substr($data[2], 14);
 	
     
-### CHECK IF USER IS AUTHORIZED ###
+	### CHECK IF USER IS AUTHORIZED ###
 
     if (grep {$sender eq $_} values %authorized)  {
-
-
-		my %event_value = (
-	
-			'Enter' => '1',
-			'Exit' => '0',
-			'Test' => '2',
-	
-		); 
 
         $self->res->headers->header( 'Content-Type' => 'text/html' );
 
 
-### UPDATE ISY VAR ###
+		### VERIFY LOCATION AND UPDATE ISY VAR ###
        
         if (grep {$location eq $_} keys %isy_locations) {
 
-            my $browser = LWP::UserAgent->new;
-            my $req =  HTTP::Request->new(GET => "http://$isy_params{'address'}:$isy_params{'port'}/rest/vars/set/2/$isy_locations{$location}/$event_value{$event}");
-            $req->authorization_basic("$isy_params{'user'}", "$isy_params{'pass'}");
-            my $reply = $browser->request($req);
-
+			update_isy_var($location,$event);
             $self->app->log->info("User: $sender. Location: $location. Event: $event");        	
 			$self->render( text => 'OK', status => 200 );
 
