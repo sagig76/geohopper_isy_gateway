@@ -3,8 +3,8 @@
 #
 # Author:       Sagi Geva - sagi.geva@icloud.com
 # Project:      Geohopper ISY Home Automation Gateway
-# Version:      0.4
-# Date:			05 Dec 2014
+# Version:      0.5
+# Date:			06 Dec 2014
 #
 
 
@@ -62,9 +62,6 @@ post '/geohopper' => sub {
     if (grep {/$sender/i} values %config)  {
 
         $self->res->headers->header( 'Content-Type' => 'text/html' );
-		
-	    $self->app->log->info($config{"location.$location"});
-	    $self->app->log->info($config{"event.$event"});
 		
 
 		### VERIFY LOCATION AND UPDATE ISY VAR ###
