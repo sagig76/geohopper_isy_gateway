@@ -1,4 +1,5 @@
 
+0.4  -  05 Dec 2014 - Added support for cfg file
 0.3  -  05 Dec 2014 - Code cleanup, no feature change
 0.2  -  04 Dec 2014 - Code improvement for ISY location support
 0.1  -  17 Nov 2014 - Initial release
