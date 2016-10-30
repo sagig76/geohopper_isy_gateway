@@ -1,3 +1,4 @@
+0.6  -  29 Oct 2016 - Added app->mode('production'); to code
 0.5  -  06 Dec 2014 - Removed unnecessary log entries
 0.4  -  05 Dec 2014 - Added support for cfg file
 0.3  -  05 Dec 2014 - Code cleanup, no feature change
