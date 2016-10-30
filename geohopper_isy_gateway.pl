@@ -95,4 +95,5 @@ post '/geohopper' => sub {
 
 app->log->path('log/geohopper_isy_gateway.log');
 app->log->level('info');
+app->mode('production');
 app->start;
