@@ -4,7 +4,7 @@
 # Author:       Sagi Geva - sagi.geva@icloud.com
 # Project:      Geohopper ISY Home Automation Gateway
 # Version:      0.6
-# Date:			06 Dec 2014
+# Date:		06 Dec 2014
 #
 
 
